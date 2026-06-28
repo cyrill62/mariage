@@ -4,10 +4,7 @@ on:
     # Only deploy upon new commits to `main`
     branches:
       - main
-    # Only run this workflow if there are changes in the following
-    paths:
-      - ./**
-      - .github/workflows/website-deploy.yml
+      
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
