@@ -8,7 +8,7 @@ const config: Config = {
   // https://vike.dev/head-tags
   title: "Pamela & Cyril Wedding",
   description: "Demo showcasing Vike",
-
+  prerender: true,
   extends: [vikeReact],
 };
 
