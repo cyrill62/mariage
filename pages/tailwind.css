@@ -4,7 +4,7 @@
 
 @layer base {
   h1 {
-    @apply mb-4 text-4xl font-bold tracking-tight text-gray-900;
+    @apply mb-4 text-4xl font-bold tracking-tight;
   }
   ul {
     @apply list-disc pl-6;
