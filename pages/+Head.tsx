@@ -1,7 +1,7 @@
 // https://vike.dev/Head
 
-import logoUrl from "../assets/logo.svg";
-
 export function Head() {
-  return <></>
+  return <>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </>
 }
