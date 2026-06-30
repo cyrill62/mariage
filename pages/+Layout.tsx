@@ -22,42 +22,42 @@ function Sidebar({ children }: { children: React.ReactNode }) {
 
 const Menu = () => {
   return (
-    <>
+    <div>
       <button className="btn sm:hidden" popoverTarget="my-megamenu-1">Menu</button>
 
       <div className="megamenu max-sm:megamenu-vertical p-2 border border-base-300" id="my-megamenu-1" popover>
         <span className="megamenu-active"></span>
 
-        <button popoverTarget="a1">Services</button>
+        <button popoverTarget="a1">Mairie</button>
         <div id="a1" popover>
           <ul className="menu">
-            <li><a>Enterprise</a></li>
-            <li><a>CRM software</a></li>
-            <li><a>Security</a></li>
-            <li><a>Consulting</a></li>
+            <li><a>Scéance photos</a></li>
+            <li><a>Arrivée des invités</a></li>
+            <li><a>Cérémonie</a></li>
+            <li><a>Sortie</a></li>
           </ul>
         </div>
 
-        <button popoverTarget="a2">AI</button>
+        <button popoverTarget="a2">Vin d'honneur</button>
         <div id="a2" popover>
           <ul className="menu">
-            <li><a>AI infrastructure</a></li>
-            <li><a>Image generation</a></li>
-            <li><a>MCP servers</a></li>
+            <li><a>Entrée des mariés</a></li>
+            <li><a>Buffet</a></li>
           </ul>
         </div>
 
-        <button popoverTarget="a3">Cloud Solutions</button>
+        <button popoverTarget="a3">Repas</button>
         <div id="a3" popover>
           <ul className="menu">
-            <li><a>Cloud computing</a></li>
-            <li><a>Storage solutions</a></li>
-            <li><a>Database services</a></li>
-            <li><a>CDN performance</a></li>
+            <li><a>Les plats</a></li>
+            <li><a>Danse des mariés</a></li>
+            <li><a>Gâteaux</a></li>
+            <li><a>Le lendemain</a></li>
           </ul>
         </div>
+        <button href="#">Rechercher</button>
       </div>
-    </>
+    </div>
   ) 
 }
 
