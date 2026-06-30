@@ -4,7 +4,8 @@
     "dev": "vike dev",
     "build": "vike build",
     "preview": "vike build && vike preview",
-    "lint": "oxlint --type-aware ."
+    "lint": "oxlint --type-aware .",
+    "prettier": "prettier -w **/*.tsx"
   },
   "dependencies": {
     "react": "^19.2.7",
