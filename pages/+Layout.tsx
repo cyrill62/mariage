@@ -47,16 +47,16 @@ const Menu = () => {
               <a>Mairie</a>
               <ul className="menu w-full">
                 <li>
-                  <a>Scéance photos</a>
+                  <a href="/mairie/photos/">Scéance photos</a>
                 </li>
                 <li>
-                  <a>Arrivée des invités</a>
+                  <a href="/mairie/start/">Arrivée des invités</a>
                 </li>
                 <li>
-                  <a>Cérémonie</a>
+                  <a href="/mairie/main/">Cérémonie</a>
                 </li>
                 <li>
-                  <a>Sortie</a>
+                  <a href="/mairie/out/">Sortie</a>
                 </li>
               </ul>
             </li>
@@ -65,10 +65,10 @@ const Menu = () => {
               <a>Vin d'honneur</a>
               <ul className="menu">
                 <li>
-                  <a>Entrée des mariés</a>
+                  <a href="/mairie/photos/">Entrée des mariés</a>
                 </li>
                 <li>
-                  <a>Buffet</a>
+                  <a href="/mairie/photos/">Buffet</a>
                 </li>
               </ul>
             </li>
@@ -77,16 +77,16 @@ const Menu = () => {
               <a>Repas</a>
               <ul className="menu">
                 <li>
-                  <a>Les plats</a>
+                  <a href="/mairie/photos/">Les plats</a>
                 </li>
                 <li>
-                  <a>Danse des mariés</a>
+                  <a href="/mairie/photos/">Danse des mariés</a>
                 </li>
                 <li>
-                  <a>Gâteaux</a>
+                  <a href="/mairie/photos/">Gâteaux</a>
                 </li>
                 <li>
-                  <a>Le lendemain</a>
+                  <a href="/mairie/photos/">Le lendemain</a>
                 </li>
               </ul>
             </li>
@@ -122,7 +122,7 @@ const Menu = () => {
             <circle cx="12" cy="12" r="5" />
             <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
           </svg>
-          <input type="checkbox" value="synthwave" className="toggle theme-controller" />
+          <input type="checkbox" value="luxury" className="toggle theme-controller" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
