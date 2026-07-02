@@ -6,15 +6,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className={"flex max-w-5xl m-auto"}>
       <Menu />
-      <Sidebar />
-      <Content>{children}</Content>
+      <div className="flex flex-row">
+        <Sidebar />
+        <Content>{children}</Content>
+      </div>
     </div>
   );
 }
 
 function Sidebar() {
   return (
-    <div id="sidebar" className={"p-5 flex flex-col shrink-0 border-r-2 border-r-gray-200"}>
+    <div id="sidebar" className={"p-5 basis-1/4 shrink-0 border-r-2 border-r-gray-200"}>
       <ul className="steps steps-vertical">
         <li className="step step-primary">Mairie</li>
         <li className="step step-primary">Vin d'honneur</li>
@@ -26,7 +28,7 @@ function Sidebar() {
 
 const Menu = () => {
   return (
-    <div>
+    <div className="flex flex-row">
       <div className="navbar bg-base-100 shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
@@ -147,7 +149,7 @@ const Menu = () => {
 
 function Content({ children }: { children: React.ReactNode }) {
   return (
-    <div id="page-container">
+    <div id="page-container" className="basis-3/4">
       <div id="page-content" className={"p-5 pb-12 min-h-screen"}>
         {children}
       </div>
