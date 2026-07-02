@@ -15,9 +15,28 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 }
 
 function Sidebar() {
+  const sections = [
+    ["mairie", "Mairie"],
+    ["vo", "Vin d'honneur"],
+    ["diner", "Repas"],
+  ];
+
+  let activeSection = -1;
+
+  if (typeof window != "undefined") {
+    sections.forEach((section, i) => {
+      if (window.location.pathname.match(`/${section[0]}/`)) {
+        activeSection = i;
+      }
+    });
+  }
+
   return (
     <div id="sidebar" className={"p-5 basis-1/4 shrink-0 border-r-2 border-r-gray-200"}>
       <ul className="steps steps-vertical">
+        {sections.map((section, i) => (
+          <li key={`sidebar-${i}`} className={`step ${i <= activeSection}`}>section[1]</li>
+        ))}
         <li className="step step-primary">Mairie</li>
         <li className="step step-primary">Vin d'honneur</li>
         <li className="step">Repas</li>
@@ -44,7 +63,7 @@ const Menu = () => {
           </div>
           <ul tabIndex={-1} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
             <li>
-              <a>Mairie</a>
+              <strong>Mairie</strong>
               <ul className="menu w-full">
                 <li>
                   <a href="/mairie/photos/">Scéance photos</a>
@@ -62,31 +81,31 @@ const Menu = () => {
             </li>
 
             <li>
-              <a>Vin d'honneur</a>
+              <strong>Vin d'honneur</strong>
               <ul className="menu">
                 <li>
-                  <a href="/mairie/photos/">Entrée des mariés</a>
+                  <a href="/vo/photos/">Entrée des mariés</a>
                 </li>
                 <li>
-                  <a href="/mairie/photos/">Buffet</a>
+                  <a href="/vo/photos/">Buffet</a>
                 </li>
               </ul>
             </li>
 
             <li>
-              <a>Repas</a>
+              <strong>Repas</strong>
               <ul className="menu">
                 <li>
-                  <a href="/mairie/photos/">Les plats</a>
+                  <a href="/diner/photos/">Les plats</a>
                 </li>
                 <li>
-                  <a href="/mairie/photos/">Danse des mariés</a>
+                  <a href="/diner/photos/">Danse des mariés</a>
                 </li>
                 <li>
-                  <a href="/mairie/photos/">Gâteaux</a>
+                  <a href="/diner/photos/">Gâteaux</a>
                 </li>
                 <li>
-                  <a href="/mairie/photos/">Le lendemain</a>
+                  <a href="/diner/photos/">Le lendemain</a>
                 </li>
               </ul>
             </li>
