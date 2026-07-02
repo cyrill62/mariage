@@ -46,28 +46,7 @@ const Menu = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a>Homepage</a>
-              </li>
-              <li>
-                <a>Portfolio</a>
-              </li>
-              <li>
-                <a>About</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="navbar-center">
-          <div
-            className="megamenu max-sm:megamenu-vertical p-2 border border-base-300 megamenu-full"
-            id="my-megamenu-1"
-            popover
-          >
-            <span className="megamenu-active"></span>
-
-            <button popoverTarget="a1">Mairie</button>
-            <div id="a1" popover>
-              <div className="flex max-sm:flex-col items-start">
+                <a>Mairie</a>
                 <ul className="menu w-full">
                   <li>
                     <a>Scéance photos</a>
@@ -82,12 +61,10 @@ const Menu = () => {
                     <a>Sortie</a>
                   </li>
                 </ul>
-              </div>
-            </div>
+              </li>
 
-            <button popoverTarget="a2">Vin d'honneur</button>
-            <div id="a2" popover>
-              <div className="flex max-sm:flex-col items-start">
+              <li>
+                <a>Vin d'honneur</a>
                 <ul className="menu">
                   <li>
                     <a>Entrée des mariés</a>
@@ -96,12 +73,10 @@ const Menu = () => {
                     <a>Buffet</a>
                   </li>
                 </ul>
-              </div>
-            </div>
+              </li>
 
-            <button popoverTarget="a3">Repas</button>
-            <div id="a3" popover>
-              <div className="flex max-sm:flex-col items-start">
+              <li>
+                <a>Repas</a>
                 <ul className="menu">
                   <li>
                     <a>Les plats</a>
@@ -116,49 +91,54 @@ const Menu = () => {
                     <a>Le lendemain</a>
                   </li>
                 </ul>
-              </div>
-            </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="navbar-center">
+          <div
+            className="megamenu max-sm:megamenu-vertical p-2 border border-base-300 megamenu-full"
+            id="my-megamenu-1"
+            popover
+          >
+            <span className="megamenu-active"></span>
+
             <a className="btn btn-light" href="#">
               Rechercher
             </a>
           </div>
         </div>
         <div className="navbar-end">
-          <button className="btn btn-ghost btn-circle">
+          <label className="flex cursor-pointer gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
+              fill="none"
               stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
+              <circle cx="12" cy="12" r="5" />
+              <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
             </svg>
-          </button>
-          <button className="btn btn-ghost btn-circle">
-            <div className="indicator">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                />
-              </svg>
-              <span className="badge badge-xs badge-primary indicator-item"></span>
-            </div>
-          </button>
+            <input type="checkbox" value="synthwave" className="toggle theme-controller" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </label>
         </div>
       </div>
     </div>
