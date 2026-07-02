@@ -35,11 +35,10 @@ function Sidebar() {
     <div id="sidebar" className={"p-5 basis-1/4 shrink-0 border-r-2 border-r-gray-200"}>
       <ul className="steps steps-vertical">
         {sections.map((section, i) => (
-          <li key={`sidebar-${i}`} className={`step ${i <= activeSection}`}>section[1]</li>
+          <li key={`sidebar-${i}`} className={`step ${i <= activeSection && "step-primary"}`}>
+            {section[1]}
+          </li>
         ))}
-        <li className="step step-primary">Mairie</li>
-        <li className="step step-primary">Vin d'honneur</li>
-        <li className="step">Repas</li>
       </ul>
     </div>
   );
