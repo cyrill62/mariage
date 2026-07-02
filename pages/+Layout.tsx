@@ -25,6 +25,8 @@ function Sidebar() {
 
   if (typeof window != "undefined") {
     sections.forEach((section, i) => {
+      console.log(i)
+      console.log(section)
       if (window.location.pathname.match(`/${section[0]}/`)) {
         activeSection = i;
       }
