@@ -28,7 +28,7 @@ function Sidebar() {
 
 const Menu = () => {
   return (
-    <section className="navbar bg-base-100 shadow-sm">
+    <section id="navbar" className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -42,7 +42,7 @@ const Menu = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" />
             </svg>
           </div>
-          <ul tabIndex={-1} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+          <ul tabIndex={-1} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
             <li>
               <a>Mairie</a>
               <ul className="menu w-full">
