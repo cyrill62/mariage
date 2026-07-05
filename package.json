@@ -13,6 +13,7 @@
     "graphql": "^16.14.2",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
+    "react-markdown": "^10.1.0",
     "vike": "0.4.259",
     "vike-react": "^0.6.24",
     "vike-react-apollo": "^0.1.7"

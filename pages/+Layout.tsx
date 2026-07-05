@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 function Sidebar() {
   const { data }: { data: any } = useQuery(gql`
     {
-      mariageSections {
+      mariageSections(pagination: { limit: 100 }, sort: ["order:asc"]) {
         name
         slug
         mariage_section {
@@ -44,7 +44,7 @@ function Sidebar() {
 
   if (typeof window != "undefined") {
     sections.forEach((section, i) => {
-      if (window.location.href.match(`\#${section.slug}`)) {
+      if (window.location.href.match(`/section/${section.slug}`)) {
         activeSection = i;
       }
     });
@@ -60,7 +60,7 @@ function Sidebar() {
             data-active-section={activeSection}
             className={`step ${i <= activeSection && "step-primary"}`}
           >
-            {section.name}
+            <a href={`/section/${section.slug}/`}>{section.name}</a>
           </li>
         ))}
       </ul>
@@ -71,14 +71,14 @@ function Sidebar() {
 const Menu = () => {
   const { data }: { data: any } = useQuery(gql`
     {
-      mariageSections {
+      mariageSections(pagination: { limit: 100 }, sort: ["order:asc"]) {
         name
         slug
         mariage_section {
           slug
         }
         contentMD
-        mariage_sections {
+        mariage_sections(pagination: { limit: 100 }, sort: ["order:asc"]) {
           name
           slug
         }
@@ -113,7 +113,9 @@ const Menu = () => {
           <ul tabIndex={-1} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
             {rootSections.map((section) => (
               <li key={`menu-${section.slug}`}>
-                <strong>{section.name}</strong>
+                <a href={`/section/${section.slug}/`}>
+                  <strong>{section.name}</strong>
+                </a>
                 <ul className="menu w-full">
                   {findSubSections(section.slug).map((sub) => (
                     <li key={`menu-${section.slug}-${sub.slug}`}>

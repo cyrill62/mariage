@@ -1,10 +1,11 @@
 import { useQuery } from "@apollo/client/react";
 import { gql } from "@apollo/client";
+import ReactMarkdown from "react-markdown";
 
 const Page = () => {
   const { data }: { data: any } = useQuery(gql`
     {
-      mariageSections {
+      mariageSections(pagination: { limit: 100 }) {
         name
         slug
         mariage_section {
@@ -15,14 +16,11 @@ const Page = () => {
           name
           slug
         }
-      }
-      mariageItems(sort: ["date:asc"]) {
-        url
-        tags
-        date
-        desc
-        section {
-          slug
+        items(sort: ["date:asc"]) {
+          url
+          tags
+          date
+          desc
         }
       }
     }
@@ -32,21 +30,46 @@ const Page = () => {
   let slug;
 
   if (typeof window != "undefined") {
-    slug = location.pathname.split("/").pop()?.split("_").pop();
+    slug = location.pathname.replace(/\/$/, "").split("/").pop()?.split("_").pop();
   }
-
-  console.log(slug);
 
   if (data) {
     sections = data.mariageSections.filter((section) => section.slug == slug);
   }
 
-  return (
-    <>
-      <h1>{sections[0]?.name}</h1>
-      <div>{sections[0]?.contentMD}</div>
-    </>
-  );
+  const section = sections[0];
+
+  if (section) {
+    console.log(section);
+    return (
+      <>
+        <h1>{section.name}</h1>
+        <div>
+          <ReactMarkdown>{section.contentMD}</ReactMarkdown>
+        </div>
+        <ul>
+          {section.items.map((item) => (
+            <li>
+              <iframe src={item.url} alt={item.url} width="300" height="300" />
+              <div>
+                <ReactMarkdown>{item.desc}</ReactMarkdown>
+              </div>
+              <div>
+                {"#"}
+                {item.tags.join("; #")}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div className="loading" />
+      </>
+    );
+  }
 };
 
 export default Page;
