@@ -12,7 +12,7 @@ const Page = () => {
           slug
         }
         contentMD
-        mariage_sections {
+        mariage_sections(pagination: { limit: 100 }, sort: ["order:asc"]) {
           name
           slug
         }
@@ -47,6 +47,13 @@ const Page = () => {
         <div>
           <ReactMarkdown>{section.contentMD}</ReactMarkdown>
         </div>
+        <ul>
+          {section.mariage_sections.map((sub) => (
+            <li>
+              <a href={`/section/${section.slug}_${sub.slug}`}>{sub.name}</a>
+            </li>
+          ))}
+        </ul>
         <ul>
           {section.items.map((item) => (
             <li>
