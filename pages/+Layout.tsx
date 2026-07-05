@@ -51,7 +51,7 @@ function Sidebar() {
   }
 
   return (
-    <div id="sidebar" className={"p-5 basis-1/4 shrink-0 border-r-2 border-r-gray-200"}>
+    <div id="sidebar" className={"hidden md:block p-5 basis-1/4 shrink-0 border-r-2 border-r-gray-200"}>
       <ul className="steps steps-vertical">
         {sections.map((section, i) => (
           <li
@@ -179,7 +179,7 @@ const Menu = () => {
 
 function Content({ children }: { children: React.ReactNode }) {
   return (
-    <div id="page-container" className="basis-3/4">
+    <div id="page-container" className="md:basis-3/4">
       <div id="page-content" className={"p-5 pb-12 min-h-screen"}>
         {children}
       </div>

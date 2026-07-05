@@ -57,19 +57,21 @@ const Page = () => {
         </ul>
         <div className="carousel w-full">
           {section.items.map((item, i) => (
-            <div id={`item-${i}`}  className="carousel-item relative w-full">
-              <iframe src={item.url} alt={item.url} width="300" height="300" className="w-full" />
-              <div className="caption">
-                <ReactMarkdown>{item.desc}</ReactMarkdown>
-              </div>
-              <div>
-                {item.tags.map((tag, i) => (
-                  <div
-                    className={`badge badge-${badgeVariants[i % badgeVariants.length]} badge-${badgeColors[i % badgeColors.length]} me-2`}
-                  >
-                    #{tag}
-                  </div>
-                ))}
+            <div id={`item-${i}`} className="carousel-item relative w-full">
+              <div className="w-full">
+                <iframe src={item.url} alt={item.url} width="300" height="500" className="w-full" />
+                <div className="caption my-4">
+                  <ReactMarkdown>{item.desc}</ReactMarkdown>
+                </div>
+                <div>
+                  {item.tags.map((tag, i) => (
+                    <div
+                      className={`badge badge-${badgeVariants[i % badgeVariants.length]} badge-${badgeColors[i % badgeColors.length]} me-2`}
+                    >
+                      #{tag}
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                 <a href={`#item-${i - 1}`} className="btn btn-circle">
@@ -79,6 +81,15 @@ const Page = () => {
                   ❯
                 </a>
               </div>
+            </div>
+          ))}
+        </div>
+        <div className="divider" />
+        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
+          {section.items.map((item, i) => (
+            <div key={`card-${i}`} className="rounded-box shadow-md text-center">
+              <iframe src={item.url} alt={item.url} height="200" className="rounded-t-box w-full" />
+              <a href={`#item-${i}`}>👁️</a>
             </div>
           ))}
         </div>
