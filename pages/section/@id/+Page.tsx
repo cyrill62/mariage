@@ -1,7 +1,8 @@
 import { useQuery } from "@apollo/client/react";
 import { gql } from "@apollo/client";
 import ReactMarkdown from "react-markdown";
-
+const badgeColors = [/*'primary', 'accent', */'info', 'warning', 'error', 'success', 'secondary']
+const badgeVariants = ['soft', 'outline', 'dash', '']
 const Page = () => {
   const { data }: { data: any } = useQuery(gql`
     {
@@ -62,8 +63,7 @@ const Page = () => {
                 <ReactMarkdown>{item.desc}</ReactMarkdown>
               </div>
               <div>
-                {"#"}
-                {item.tags.join("; #")}
+                {item.tags.map((tag, i) =>(<div className={`badge badge-${badgeVariants[i % badgeVariants.length]} badge-${badgeColors[i % badgeColors.length]} me-2`}>#{tag}</div>))}
               </div>
             </li>
           ))}
