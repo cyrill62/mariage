@@ -5,13 +5,17 @@
     "build": "vike build",
     "preview": "vike build && vike preview",
     "lint": "oxlint --type-aware .",
-    "prettier": "prettier -w **/*.tsx"
+    "prettier": "prettier -w **/*.tsx **/*.ts"
   },
   "dependencies": {
+    "@apollo/client": "^4.2.5",
+    "@apollo/client-react-streaming": "^0.14.5",
+    "graphql": "^16.14.2",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "vike": "0.4.259",
-    "vike-react": "^0.6.24"
+    "vike-react": "^0.6.24",
+    "vike-react-apollo": "^0.1.7"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.1",

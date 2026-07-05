@@ -1,6 +1,8 @@
 import "./Layout.css";
 import "./tailwind.css";
 import { Link } from "../components/Link";
+import { useQuery } from "@apollo/client/react";
+import { gql } from "@apollo/client";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -15,20 +17,35 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 }
 
 function Sidebar() {
-  const sections = [
-    ["mairie", "Mairie"],
-    ["vo", "Vin d'honneur"],
-    ["diner", "Repas"],
-  ];
+  const { data }: { data: any } = useQuery(gql`
+    {
+      mariageSections {
+        name
+        slug
+        mariage_section {
+          slug
+        }
+        contentMD
+        mariage_sections {
+          name
+          slug
+        }
+      }
+    }
+  `);
+
+  let sections = [];
+
+  if (data) {
+    sections = data.mariageSections.filter((section) => section.mariage_section == null);
+  }
 
   let activeSection = -1;
 
   if (typeof window != "undefined") {
     sections.forEach((section, i) => {
-      console.log({ index: i, section, activeSection })
-      if (window.location.pathname.match(`/${section[0]}/`)) {
+      if (window.location.href.match(`\#${section.slug}`)) {
         activeSection = i;
-        console.log({ index: i, section, activeSection })
       }
     });
   }
@@ -37,8 +54,13 @@ function Sidebar() {
     <div id="sidebar" className={"p-5 basis-1/4 shrink-0 border-r-2 border-r-gray-200"}>
       <ul className="steps steps-vertical">
         {sections.map((section, i) => (
-          <li key={`sidebar-${i}`} data-section={i} data-active-section={activeSection} className={`step ${i <= activeSection && "step-primary"}`}>
-            {section[1]}
+          <li
+            key={`sidebar-${i}`}
+            data-section={i}
+            data-active-section={activeSection}
+            className={`step ${i <= activeSection && "step-primary"}`}
+          >
+            {section.name}
           </li>
         ))}
       </ul>
@@ -47,6 +69,32 @@ function Sidebar() {
 }
 
 const Menu = () => {
+  const { data }: { data: any } = useQuery(gql`
+    {
+      mariageSections {
+        name
+        slug
+        mariage_section {
+          slug
+        }
+        contentMD
+        mariage_sections {
+          name
+          slug
+        }
+      }
+    }
+  `);
+
+  let rootSections = [];
+
+  if (data) {
+    rootSections = data.mariageSections.filter((section: any) => section.mariage_section == null);
+  }
+
+  const findSubSections = (slug: string) =>
+    data.mariageSections.filter((section: any) => section.mariage_section?.slug == slug);
+
   return (
     <section id="navbar" className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -63,53 +111,18 @@ const Menu = () => {
             </svg>
           </div>
           <ul tabIndex={-1} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
-            <li>
-              <strong>Mairie</strong>
-              <ul className="menu w-full">
-                <li>
-                  <a href="/mairie/photos/">Scéance photos</a>
-                </li>
-                <li>
-                  <a href="/mairie/start/">Arrivée des invités</a>
-                </li>
-                <li>
-                  <a href="/mairie/main/">Cérémonie</a>
-                </li>
-                <li>
-                  <a href="/mairie/out/">Sortie</a>
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              <strong>Vin d'honneur</strong>
-              <ul className="menu">
-                <li>
-                  <a href="/vo/photos/">Entrée des mariés</a>
-                </li>
-                <li>
-                  <a href="/vo/photos/">Buffet</a>
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              <strong>Repas</strong>
-              <ul className="menu">
-                <li>
-                  <a href="/diner/photos/">Les plats</a>
-                </li>
-                <li>
-                  <a href="/diner/photos/">Danse des mariés</a>
-                </li>
-                <li>
-                  <a href="/diner/photos/">Gâteaux</a>
-                </li>
-                <li>
-                  <a href="/diner/photos/">Le lendemain</a>
-                </li>
-              </ul>
-            </li>
+            {rootSections.map((section) => (
+              <li key={`menu-${section.slug}`}>
+                <strong>{section.name}</strong>
+                <ul className="menu w-full">
+                  {findSubSections(section.slug).map((sub) => (
+                    <li key={`menu-${section.slug}-${sub.slug}`}>
+                      <a href={`/section/${section.slug}_${sub.slug}`}>{sub.name}</a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
