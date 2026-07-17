@@ -109,7 +109,7 @@ const Page = () => {
           {uncategorized.map((item, i) => (
             <div key={`card-${i}`} className="rounded-box shadow-md text-center">
               <iframe src={item.url} height="200" className="rounded-t-box w-full" />
-              <p>{item.url}</p>
+              <a href={item.url}>📰</a>
             </div>
           ))}
         </div>
