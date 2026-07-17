@@ -6,6 +6,12 @@ const badgeVariants = ["soft", "outline", "dash", ""];
 const Page = () => {
   const { data }: { data: any } = useQuery(gql`
     {
+      mariageItems(filters: { section: null }, sort: ["date:asc"], pagination: { limit: 1000 }) {
+        url
+        tags
+        date
+        desc
+      }
       mariageSections(pagination: { limit: 100 }) {
         name
         slug
@@ -28,6 +34,7 @@ const Page = () => {
   `);
 
   let sections = [];
+  let uncategorized = [];
   let slug;
 
   if (typeof window != "undefined") {
@@ -36,6 +43,8 @@ const Page = () => {
 
   if (data) {
     sections = data.mariageSections.filter((section) => section.slug == slug);
+
+    uncategorized = data.mariageItems;
   }
 
   const section = sections[0];
@@ -87,9 +96,19 @@ const Page = () => {
         <div className="divider" />
         <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
           {section.items.map((item, i) => (
-            <div key={`card-${i}`} className="rounded-box shadow-md text-center">
+            <div key={`card-${i}`} className="rounded-box shadow-md text-center" title={item.url}>
               <iframe src={item.url} alt={item.url} height="200" className="rounded-t-box w-full" />
               <a href={`#item-${i}`}>👁️</a>
+            </div>
+          ))}
+        </div>
+
+        <div className="divider" />
+        <h3>A trier</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
+          {uncategorized.map((item, i) => (
+            <div key={`card-${i}`} className="rounded-box shadow-md text-center" title={item.url}>
+              <iframe src={item.url} alt={item.url} height="200" className="rounded-t-box w-full" />
             </div>
           ))}
         </div>
