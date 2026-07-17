@@ -6,7 +6,7 @@ const badgeVariants = ["soft", "outline", "dash", ""];
 const Page = () => {
   const { data }: { data: any } = useQuery(gql`
     {
-      mariageItems(filters: { section: null }, sort: ["date:asc"], pagination: { limit: 1000 }) {
+      mariageItems(filters: { section: null }, sort: ["date:asc"], pagination: { limit: 50 }) {
         url
         tags
         date
