@@ -96,9 +96,9 @@ const Page = () => {
         <div className="divider" />
         <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
           {section.items.map((item, i) => (
-            <div key={`card-${i}`} className="rounded-box shadow-md text-center" title={item.url}>
-              <iframe src={item.url} alt={item.url} height="200" className="rounded-t-box w-full" />
-              <a href={`#item-${i}`}>👁️</a>
+            <div key={`card-${i}`} className="rounded-box shadow-md text-center">
+              <iframe src={item.url} height="200" className="rounded-t-box w-full" />
+              <a href={`#item-${i}`} title={item.url}>👁️</a>
             </div>
           ))}
         </div>
@@ -107,8 +107,9 @@ const Page = () => {
         <h3>A trier</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
           {uncategorized.map((item, i) => (
-            <div key={`card-${i}`} className="rounded-box shadow-md text-center" title={item.url}>
-              <iframe src={item.url} alt={item.url} height="200" className="rounded-t-box w-full" />
+            <div key={`card-${i}`} className="rounded-box shadow-md text-center">
+              <iframe src={item.url} height="200" className="rounded-t-box w-full" />
+              <p>{item.url}</p>
             </div>
           ))}
         </div>
