@@ -161,6 +161,23 @@ export default function Page() {
           </a>
         ))}
       </div>
+      <div className="hidden">
+        <div className="badge badge-primary">primary</div>
+        <div className="badge badge-soft badge-primary">primary</div>
+        <div className="badge badge-dash badge-primary">primary</div>
+
+                <div className="badge badge-accent">accent</div>
+        <div className="badge badge-soft badge-accent">accent</div>
+        <div className="badge badge-dash badge-accent">accent</div>
+
+                <div className="badge badge-success">success</div>
+        <div className="badge badge-soft badge-success">success</div>
+        <div className="badge badge-dash badge-success">success</div>
+
+                <div className="badge badge-info">info</div>
+        <div className="badge badge-soft badge-info">info</div>
+        <div className="badge badge-dash badge-info">info</div>
+      </div>
 
       <div className="divider" />
       {items.length == 0 && (

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-  themes: pastel --default, luxury --prefersdark;
+  themes: pastel --default, dracula --prefersdark;
 }
 
 @layer base {
