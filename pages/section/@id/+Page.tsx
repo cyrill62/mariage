@@ -11,7 +11,10 @@ const Page = () => {
 
   const { data, loading, error }: { data: any; loading: boolean; error: any } = useQuery(gql`
     {
-      mariageSections(pagination: { limit: 100 }, filters: { slug: { eq: "${pageContext.routeParams.id}" }) {
+      mariageSections(
+        pagination: { limit: 100 }
+        filters: { slug: { eq: "${pageContext.routeParams.id}" } }
+      ) {
         name
         slug
         mariage_section {

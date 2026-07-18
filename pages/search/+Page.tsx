@@ -82,7 +82,7 @@ export default function Page() {
    * Returns the full Typesense SearchResult object containing matched documents.
    */
   export async function searchMariageItems(
-    queryWord: string,
+    tag: string,
     config: SearchConfig,
   ): Promise<SearchResult<MariageItemSchema>> {
     // ⚠️ In production, instantiate the client once and reuse it to avoid overhead
