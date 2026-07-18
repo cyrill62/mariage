@@ -7,12 +7,12 @@ import { SetContextLink } from "@apollo/client/link/context";
 
 export default (pageContext: PageContext) => {
   const httpLink = new HttpLink({
-    uri: import.meta.env.API_URL,
+    uri: import.meta.env.PUBLIC_ENV__API_URL,
   });
 
   const authLink = new SetContextLink(({ headers }) => {
     const token =
-      import.meta.env.API_TOKEN;
+      import.meta.env.PUBLIC_ENV__API_TOKEN;
     // return the headers to the context so httpLink can read them
     return {
       headers: {

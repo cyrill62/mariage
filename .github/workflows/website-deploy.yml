@@ -16,8 +16,8 @@ jobs:
       - name: Build website with VIKE
         run: npm run build
         env:
-          API_URL: ${{ vars.API_URL }}
-          API_TOKEN: ${{ vars.API_TOKEN }}
+          PUBLIC_ENV__API_URL: ${{ vars.API_URL }}
+          PUBLIC_ENV__API_TOKEN: ${{ vars.API_TOKEN }}
           PUBLIC_ENV__TYPESENSE_API_KEY: ${{ vars.TYPESENSE_API_KEY }}
           PUBLIC_ENV__TYPESENSE_API_URL: ${{ vars.TYPESENSE_API_URL }}
 
