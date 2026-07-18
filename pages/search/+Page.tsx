@@ -149,6 +149,11 @@ export default function Page() {
       </div>
 
       <div className="divider" />
+      {items.length == 0 && (
+        <div role="alert" className="alert alert-warning alert-dash">
+          <span>Aucun résultat trouvé</span>
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
         {items.map((item, i) => (
           <div key={`card-${i}`} className="rounded-box shadow-md text-center">

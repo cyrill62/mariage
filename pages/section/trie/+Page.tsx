@@ -88,7 +88,7 @@ const Page = () => {
             </div>
           ))}
         </div>
-        {toast && <div className="badge badge-success">{toast}</div>}
+        {toast && <div className="badge badge-success mt-5">{toast}</div>}
       </>
     );
   } else {
