@@ -1,4 +1,5 @@
 import typesense, { SearchResult } from "typesense";
+import { useState } from "react";
 
 const tags = [
   "enfants",
@@ -73,6 +74,7 @@ interface SearchConfig {
 }
 
 export default function Page() {
+  const [items, setItems] = useState([]);
   /**
    * Searches for a word/phrase in your self-hosted Typesense service.
    * Returns the full Typesense SearchResult object containing matched documents.
@@ -129,8 +131,8 @@ export default function Page() {
 
       // Extract the actual documents from the response
       const matchedItems = result.hits.map((hit) => hit.document);
-
       console.table(matchedItems);
+      setItems(matchedItems);
     } catch (err) {
       console.error("Search failed:", err.message);
     }
@@ -143,6 +145,15 @@ export default function Page() {
           <a className={`badge me-2`} href={`#${tag}`} onClick={() => runSearch(tag)}>
             #{tag}
           </a>
+        ))}
+      </div>
+
+      <div className="divider" />
+      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
+        {items.map((item, i) => (
+          <div key={`card-${i}`} className="rounded-box shadow-md text-center">
+            <iframe src={item.url} height="200" className="rounded-t-box w-full" />
+          </div>
         ))}
       </div>
     </>

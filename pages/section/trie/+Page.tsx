@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { useQuery } from "@apollo/client/react";
 import { gql } from "@apollo/client";
 
 const badgeColors = [/*'primary', 'accent', */ "info", "warning", "error", "success", "secondary"];
 const badgeVariants = ["soft", "outline", "dash", ""];
 const Page = () => {
+  const [toast, setToast] = useState();
+
   const { data, loading, error }: { data: any; loading: boolean; error: any } = useQuery(gql`
     {
       mariageItems(filters: { section: null }, sort: ["date:asc"], pagination: { limit: 10 }) {
@@ -35,6 +38,8 @@ const Page = () => {
     if (navigator.clipboard?.writeText) {
       try {
         await navigator.clipboard.writeText(url);
+        setToast("Copié");
+        setTimeout(() => setToast(null), 2000);
         return true;
       } catch (error) {
         console.warn("⚠️ Clipboard API failed, falling back...", error);
@@ -83,6 +88,7 @@ const Page = () => {
             </div>
           ))}
         </div>
+        {toast && <div className="badge badge-success">{toast}</div>}
       </>
     );
   } else {
