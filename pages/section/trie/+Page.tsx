@@ -88,7 +88,13 @@ const Page = () => {
             </div>
           ))}
         </div>
-        {toast && <div className="badge badge-success mt-5">{toast}</div>}
+        {toast && (
+          <div className="toast toast-center">
+            <div role="alert" className="alert alert-success alert-soft">
+              <span>{toast}</span>
+            </div>
+          </div>
+        )}
       </>
     );
   } else {
