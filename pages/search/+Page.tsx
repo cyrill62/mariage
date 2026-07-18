@@ -119,7 +119,7 @@ export default function Page() {
       host: "search.lepagnot.fr",
       port: "443",
       protocol: "https",
-      apiKey: "your-strong-master-key", // 🔒 Never hardcode! Use process.env.TYPESENSE_API_KEY
+      apiKey: "pXziz6aPYWthhhhvK1fmZjXj1lKZSI62", // 🔒 Never hardcode! Use process.env.TYPESENSE_API_KEY
       collectionName: "mariageItems",
       queryBy: ["url"], // Fields to search in
       limit: 50,
