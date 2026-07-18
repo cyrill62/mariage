@@ -18,8 +18,8 @@ jobs:
         env:
           API_URL: ${{ vars.API_URL }}
           API_TOKEN: ${{ vars.API_TOKEN }}
-          TYPESENSE_API_KEY: ${{ vars.TYPESENSE_API_KEY }}
-          TYPESENSE_API_URL: ${{ vars.TYPESENSE_API_URL }}
+          PUBLIC_ENV__TYPESENSE_API_KEY: ${{ vars.TYPESENSE_API_KEY }}
+          PUBLIC_ENV__TYPESENSE_API_URL: ${{ vars.TYPESENSE_API_URL }}
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.8.0

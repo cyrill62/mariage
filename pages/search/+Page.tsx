@@ -108,8 +108,8 @@ export default function Page() {
   // Example usage in your app/server
   async function runSearch(tag: string) {
     const config: SearchConfig = {
-      url: import.meta.env.TYPESENSE_API_URL,
-      apiKey: import.meta.env.TYPESENSE_API_TOKEN, // 🔒 Never hardcode! Use process.env.TYPESENSE_API_KEY
+      url: import.meta.env.PUBLIC_ENV__TYPESENSE_API_URL,
+      apiKey: import.meta.env.PUBLIC_ENV__TYPESENSE_API_TOKEN, // 🔒 Never hardcode! Use process.env.TYPESENSE_API_KEY
       collectionName: "mariageItems",
       queryBy: ["url"], // Fields to search in
       limit: 50,
