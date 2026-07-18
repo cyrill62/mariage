@@ -65,9 +65,7 @@ interface MariageItemSchema {
 }
 
 interface SearchConfig {
-  host: string;
-  port: number | string;
-  protocol: "http" | "https";
+  url: string;
   apiKey: string;
   collectionName?: string;
   queryBy?: (keyof MariageItemSchema)[]; // Fields to search in
@@ -82,13 +80,7 @@ export default function Page() {
   async function searchMariageItems(tag: string, config: SearchConfig): Promise<SearchResult<MariageItemSchema>> {
     // ⚠️ In production, instantiate the client once and reuse it to avoid overhead
     const client = new typesense.Client({
-      nodes: [
-        {
-          host: String(config.host),
-          port: config.port,
-          protocol: config.protocol,
-        },
-      ],
+      nodes: [config.url],
       apiKey: config.apiKey,
       connectionTimeoutSeconds: 2,
     });
@@ -116,10 +108,8 @@ export default function Page() {
   // Example usage in your app/server
   async function runSearch(tag: string) {
     const config: SearchConfig = {
-      host: "search.lepagnot.fr",
-      port: "443",
-      protocol: "https",
-      apiKey: "pXziz6aPYWthhhhvK1fmZjXj1lKZSI62", // 🔒 Never hardcode! Use process.env.TYPESENSE_API_KEY
+      url: import.meta.env.TYPESENSE_API_URL,
+      apiKey: import.meta.env.TYPESENSE_API_TOKEN, // 🔒 Never hardcode! Use process.env.TYPESENSE_API_KEY
       collectionName: "mariageItems",
       queryBy: ["url"], // Fields to search in
       limit: 50,
