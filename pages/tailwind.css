@@ -17,7 +17,4 @@
   p {
     @apply mb-3;
   }
-  a {
-    @apply text-blue-600 hover:text-pink-400 visited:text-blue-900;
-  }
 }

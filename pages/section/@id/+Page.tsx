@@ -69,10 +69,10 @@ const Page = () => {
               </div>
               <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                 <a href={`#item-${i - 1}`} className="btn btn-circle">
-                  <FontAwesomeIcon icon={faChevronRight} />
+                  <FontAwesomeIcon icon={faChevronLeft} />
                 </a>
                 <a href={`#item-${i + 1}`} className="btn btn-circle">
-                  <FontAwesomeIcon icon={faChevronLeft} />
+                  <FontAwesomeIcon icon={faChevronRight} />
                 </a>
               </div>
             </div>

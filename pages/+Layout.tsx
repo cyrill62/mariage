@@ -143,7 +143,7 @@ const Menu = () => {
         >
           <span className="megamenu-active"></span>
 
-          <a className="btn btn-light" href="/search/">
+          <a className="btn btn-light" href="/search/" title="Rechercher">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </a>
         </div>
