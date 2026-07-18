@@ -125,6 +125,11 @@ const Menu = () => {
                 </ul>
               </li>
             ))}
+            <li>
+              <a href={`/section/trie/`}>
+                <strong>A trier</strong>
+              </a>
+            </li>
           </ul>
         </div>
       </div>

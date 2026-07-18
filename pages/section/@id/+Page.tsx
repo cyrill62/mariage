@@ -1,18 +1,17 @@
 import { useQuery } from "@apollo/client/react";
 import { gql } from "@apollo/client";
 import ReactMarkdown from "react-markdown";
+import { usePageContext } from "vike-react/usePageContext";
+
 const badgeColors = [/*'primary', 'accent', */ "info", "warning", "error", "success", "secondary"];
 const badgeVariants = ["soft", "outline", "dash", ""];
+
 const Page = () => {
-  const { data }: { data: any } = useQuery(gql`
+  const pageContext = usePageContext();
+
+  const { data, loading, error }: { data: any; loading: boolean; error: any } = useQuery(gql`
     {
-      mariageItems(filters: { section: null }, sort: ["date:asc"], pagination: { limit: 50 }) {
-        url
-        tags
-        date
-        desc
-      }
-      mariageSections(pagination: { limit: 100 }) {
+      mariageSections(pagination: { limit: 100 }, filters: { slug: { eq: '${pageContext.routeParams.id}' }) {
         name
         slug
         mariage_section {
@@ -33,24 +32,9 @@ const Page = () => {
     }
   `);
 
-  let sections = [];
-  let uncategorized = [];
-  let slug;
+  if (!loading && data) {
+    const section = data.mariageSections[0];
 
-  if (typeof window != "undefined") {
-    slug = location.pathname.replace(/\/$/, "").split("/").pop()?.split("_").pop();
-  }
-
-  if (data) {
-    sections = data.mariageSections.filter((section) => section.slug == slug);
-
-    uncategorized = data.mariageItems;
-  }
-
-  const section = sections[0];
-
-  if (section) {
-    console.log(section);
     return (
       <>
         <h1>{section.name}</h1>
@@ -98,29 +82,16 @@ const Page = () => {
           {section.items.map((item, i) => (
             <div key={`card-${i}`} className="rounded-box shadow-md text-center">
               <iframe src={item.url} height="200" className="rounded-t-box w-full" />
-              <a href={`#item-${i}`} title={item.url}>👁️</a>
-            </div>
-          ))}
-        </div>
-
-        <div className="divider" />
-        <h3>A trier</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
-          {uncategorized.map((item, i) => (
-            <div key={`card-${i}`} className="rounded-box shadow-md text-center">
-              <iframe src={item.url} height="200" className="rounded-t-box w-full" />
-              <a href={item.url}>📰</a>
+              <a href={`#item-${i}`} title={item.url}>
+                👁️
+              </a>
             </div>
           ))}
         </div>
       </>
     );
   } else {
-    return (
-      <>
-        <div className="loading" />
-      </>
-    );
+    return <div className="loading" />;
   }
 };
 

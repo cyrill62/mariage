@@ -10,6 +10,8 @@ const config: Config = {
   title: "Pamela & Cyril Wedding",
   description: "Demo showcasing Vike",
   prerender: true,
+  clientRouting: true,
+  hydrationCanBeAborted: true,
   extends: [vikeReact, vikeReactApollo],
 };
 
