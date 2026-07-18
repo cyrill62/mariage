@@ -1,7 +1,6 @@
 import typesense, { SearchResult } from "typesense";
 import { useState } from "react";
-const badgeColors = ["primary", "accent", "info", "warning", "error", "success", "secondary"];
-const badgeVariants = ["soft", "outline", "dash", ""];
+import { badgeColored } from "../badges";
 
 const tags = [
   "enfants",
@@ -74,14 +73,6 @@ interface SearchConfig {
   queryBy?: (keyof MariageItemSchema)[]; // Fields to search in
   limit?: number; // Max results to return per page
 }
-const randomSelect = (arr: readonly string[]): string | undefined => {
-  if (!Array.isArray(arr) || arr.length === 0) {
-    return undefined;
-  }
-
-  const randomIndex = Math.floor(Math.random() * arr.length);
-  return arr[randomIndex];
-};
 
 export default function Page() {
   const [items, setItems] = useState([]);
@@ -152,11 +143,7 @@ export default function Page() {
       <h1>Recherchez les images ou vidéos où sont présentent :</h1>
       <div>
         {tags.sort().map((tag) => (
-          <a
-            className={`badge badge-${randomSelect(badgeVariants)} badge-${randomSelect(badgeColors)} me-2`}
-            href={`#${tag}`}
-            onClick={() => runSearch(tag)}
-          >
+          <a className={`${badgeColored(tag)} m-2`} href={`#${tag}`} onClick={() => runSearch(tag)}>
             #{tag}
           </a>
         ))}
