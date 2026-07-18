@@ -4,16 +4,11 @@ import { useQuery } from "@apollo/client/react";
 import { gql } from "@apollo/client";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { far } from "@fortawesome/free-regular-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-
-library.add(far);
-library.add(fas);
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={"flex flex-col max-w-5xl m-auto"}>
+    <div className={"flex flex-col m-auto"}>
       <Menu />
       <div className="flex flex-row">
         <Sidebar />
@@ -149,7 +144,7 @@ const Menu = () => {
           <span className="megamenu-active"></span>
 
           <a className="btn btn-light" href="/search/">
-            <FontAwesomeIcon icon={fas["magnifying-glass-dollar"]} />
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
           </a>
         </div>
       </div>

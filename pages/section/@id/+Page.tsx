@@ -4,8 +4,8 @@ import ReactMarkdown from "react-markdown";
 import { usePageContext } from "vike-react/usePageContext";
 import { badgeColored } from "../../badges";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { far } from "@fortawesome/free-regular-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
+import { faEye } from "@fortawesome/free-regular-svg-icons";
+import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Page = () => {
   const pageContext = usePageContext();
@@ -69,10 +69,10 @@ const Page = () => {
               </div>
               <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                 <a href={`#item-${i - 1}`} className="btn btn-circle">
-                  <FontAwesomeIcon icon={fas["chevron-right"]} />
+                  <FontAwesomeIcon icon={faChevronRight} />
                 </a>
                 <a href={`#item-${i + 1}`} className="btn btn-circle">
-                  <FontAwesomeIcon icon={fas["chevron-left"]} />
+                  <FontAwesomeIcon icon={faChevronLeft} />
                 </a>
               </div>
             </div>
@@ -84,7 +84,7 @@ const Page = () => {
             <div key={`card-${i}`} className="rounded-box shadow-md text-center">
               <iframe src={item.url} height="200" className="rounded-t-box w-full" />
               <a href={`#item-${i}`} title={item.url}>
-                <FontAwesomeIcon icon={far["eye"]} />
+                <FontAwesomeIcon icon={faEye} />
               </a>
             </div>
           ))}

@@ -2,10 +2,8 @@ import { useState } from "react";
 import { useQuery } from "@apollo/client/react";
 import { gql } from "@apollo/client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fas } from "@fortawesome/free-solid-svg-icons";
+import { faCopy } from "@fortawesome/free-solid-svg-icons";
 
-const badgeColors = [/*'primary', 'accent', */ "info", "warning", "error", "success", "secondary"];
-const badgeVariants = ["soft", "outline", "dash", ""];
 const Page = () => {
   const [toast, setToast] = useState();
 
@@ -85,13 +83,13 @@ const Page = () => {
             <div key={`card-${i}`} className="rounded-box shadow-md text-center">
               <iframe src={item.url} height="200" className="rounded-t-box w-full" />
               <a href={item.url} onClick={(event) => copyLinkToClipboard(event, item.url)}>
-                <FontAwesomeIcon icon={fas["copy"]} />
+                <FontAwesomeIcon icon={faCopy} />
               </a>
             </div>
           ))}
         </div>
         {toast && (
-          <div className="toast toast-center">
+          <div className="toast toast-center toast-middle">
             <div role="alert" className="alert alert-success alert-soft">
               <span>{toast}</span>
             </div>
