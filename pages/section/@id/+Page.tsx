@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client/react";
 import { gql } from "@apollo/client";
 import ReactMarkdown from "react-markdown";
 import { usePageContext } from "vike-react/usePageContext";
-import { badgeColored } from "../badges";
+import { badgeColored } from "../../badges";
 
 const Page = () => {
   const pageContext = usePageContext();

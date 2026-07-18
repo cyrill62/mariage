@@ -1,6 +1,5 @@
 import "./Layout.css";
 import "./tailwind.css";
-import { Link } from "../components/Link";
 import { useQuery } from "@apollo/client/react";
 import { gql } from "@apollo/client";
 
