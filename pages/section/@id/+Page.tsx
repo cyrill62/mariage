@@ -8,12 +8,13 @@ const badgeVariants = ["soft", "outline", "dash", ""];
 
 const Page = () => {
   const pageContext = usePageContext();
+  const slug = pageContext.routeParams.id.split('_').pop();
 
   const { data, loading, error }: { data: any; loading: boolean; error: any } = useQuery(gql`
     {
       mariageSections(
         pagination: { limit: 100 }
-        filters: { slug: { eq: "${pageContext.routeParams.id}" } }
+        filters: { slug: { eq: "${slug}" } }
       ) {
         name
         slug
