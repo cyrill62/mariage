@@ -1,5 +1,5 @@
-const badgeColors = ["primary", "accent", "info", "warning", "error", "success", "secondary"];
-const badgeVariants = ["soft", "outline", "dash", ""];
+const badgeColors = ["primary", "secondary", "accent", "info", "warning", "success"];
+const badgeVariants = ["outline", "dash", ""];
 
 const randomSelect = (givenName: string, options: readonly string[]): string | undefined => {
   if (!Array.isArray(options) || options.length === 0) return undefined;
