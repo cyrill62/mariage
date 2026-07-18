@@ -13,7 +13,13 @@ jobs:
       - uses: actions/setup-node@v6
 
       - run: npm install
-      - run: npm run build
+      - name: Build website with VIKE
+        run: npm run build
+        env:
+          API_URL: ${{ vars.API_URL }}
+          API_TOKEN: ${{ vars.API_TOKEN }}
+          TYPESENSE_API_KEY: ${{ vars.TYPESENSE_API_KEY }}
+          TYPESENSE_API_URL: ${{ vars.TYPESENSE_API_URL }}
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.8.0
