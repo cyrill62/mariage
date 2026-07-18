@@ -85,45 +85,44 @@ const randomSelect = (arr: readonly string[]): string | undefined => {
 
 export default function Page() {
   const [items, setItems] = useState([]);
-  const randomSelect = (list) =>
-    /**
-     * Searches for a word/phrase in your self-hosted Typesense service.
-     * Returns the full Typesense SearchResult object containing matched documents.
-     */
-    async function searchMariageItems(tag: string, config: SearchConfig): Promise<SearchResult<MariageItemSchema>> {
-      const url = new URL(config.url);
+  /**
+   * Searches for a word/phrase in your self-hosted Typesense service.
+   * Returns the full Typesense SearchResult object containing matched documents.
+   */
+  async function searchMariageItems(tag: string, config: SearchConfig): Promise<SearchResult<MariageItemSchema>> {
+    const url = new URL(config.url);
 
-      const client = new typesense.Client({
-        nodes: [
-          {
-            host: url.hostname,
-            port: url.port,
-            protocol: url.protocol.replace(/:$/, ""),
-          },
-        ],
-        apiKey: config.apiKey,
-        connectionTimeoutSeconds: 2,
-      });
+    const client = new typesense.Client({
+      nodes: [
+        {
+          host: url.hostname,
+          port: url.port,
+          protocol: url.protocol.replace(/:$/, ""),
+        },
+      ],
+      apiKey: config.apiKey,
+      connectionTimeoutSeconds: 2,
+    });
 
-      const collectionName = config.collectionName;
+    const collectionName = config.collectionName;
 
-      // Typesense expects query_by as a comma-separated string
-      const searchParams = {
-        q: "*",
-        query_by: "url",
-        limit: config.limit || 100,
-        filter_by: `tags:=[${tag}]`,
-        // Optional: add `sort_by`, `filter_by`, `page`, etc.
-      };
-
-      try {
-        const results = await client.collections(collectionName).documents().search<MariageItemSchema>(searchParams);
-        return results;
-      } catch (error) {
-        console.error("❌ Typesense search failed:", error);
-        throw new Error("Failed to retrieve mariage items from Typesense.");
-      }
+    // Typesense expects query_by as a comma-separated string
+    const searchParams = {
+      q: "*",
+      query_by: "url",
+      limit: config.limit || 100,
+      filter_by: `tags:=[${tag}]`,
+      // Optional: add `sort_by`, `filter_by`, `page`, etc.
     };
+
+    try {
+      const results = await client.collections(collectionName).documents().search<MariageItemSchema>(searchParams);
+      return results;
+    } catch (error) {
+      console.error("❌ Typesense search failed:", error);
+      throw new Error("Failed to retrieve mariage items from Typesense.");
+    }
+  }
 
   // Example usage in your app/server
   async function runSearch(tag: string) {
