@@ -11,6 +11,7 @@
     "@apollo/client": "^4.2.5",
     "@apollo/client-react-streaming": "^0.14.5",
     "graphql": "^16.14.2",
+    "typesense": "^3.0.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-markdown": "^10.1.0",
