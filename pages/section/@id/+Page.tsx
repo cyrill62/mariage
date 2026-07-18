@@ -3,8 +3,16 @@ import { gql } from "@apollo/client";
 import ReactMarkdown from "react-markdown";
 import { usePageContext } from "vike-react/usePageContext";
 
-const badgeColors = [/*'primary', 'accent', */ "info", "warning", "error", "success", "secondary"];
+const badgeColors = ["primary", "accent", "info", "warning", "error", "success", "secondary"];
 const badgeVariants = ["soft", "outline", "dash", ""];
+const randomSelect = (arr: readonly string[]): string | undefined => {
+  if (!Array.isArray(arr) || arr.length === 0) {
+    return undefined;
+  }
+
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+};
 
 const Page = () => {
   const pageContext = usePageContext();
@@ -63,7 +71,7 @@ const Page = () => {
                 <div>
                   {item.tags.map((tag, i) => (
                     <div
-                      className={`badge badge-${badgeVariants[i % badgeVariants.length]} badge-${badgeColors[i % badgeColors.length]} me-2`}
+                      className={`badge badge-${randomSelect(badgeVariants)} badge-${randomSelect(badgeColors)} me-2`}
                     >
                       #{tag}
                     </div>
