@@ -52,7 +52,7 @@ const Page = () => {
           {section.items.map((item, i) => (
             <div id={`item-${i}`} className="carousel-item relative w-full">
               <div className="w-full">
-                <iframe src={item.url} alt={item.url} width="300" height="500" className="w-full" />
+                <iframe src={item.url} width="300" height="500" className="w-full" />
                 <div className="caption my-4">
                   <ReactMarkdown>{item.desc}</ReactMarkdown>
                 </div>

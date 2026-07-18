@@ -141,7 +141,7 @@ const Menu = () => {
         >
           <span className="megamenu-active"></span>
 
-          <a className="btn btn-light" href="#">
+          <a className="btn btn-light" href="/search/">
             Rechercher
           </a>
         </div>
