@@ -58,12 +58,10 @@ const tags = [
 ];
 
 // Define the shape of your stored documents for type safety
-export interface MariageItemSchema {
+interface MariageItemSchema {
   id: string;
-  name?: string;
-  email?: string;
-  // Add other fields exactly as they appear in your Typesense collection schema
-  [key: string]: unknown;
+  url?: string;
+  tags?: string[];
 }
 
 interface SearchConfig {
@@ -81,10 +79,7 @@ export default function Page() {
    * Searches for a word/phrase in your self-hosted Typesense service.
    * Returns the full Typesense SearchResult object containing matched documents.
    */
-  export async function searchMariageItems(
-    tag: string,
-    config: SearchConfig,
-  ): Promise<SearchResult<MariageItemSchema>> {
+  async function searchMariageItems(tag: string, config: SearchConfig): Promise<SearchResult<MariageItemSchema>> {
     // ⚠️ In production, instantiate the client once and reuse it to avoid overhead
     const client = new typesense.Client({
       nodes: [
