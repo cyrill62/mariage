@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useQuery } from "@apollo/client/react";
 import { gql } from "@apollo/client";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 
 const badgeColors = [/*'primary', 'accent', */ "info", "warning", "error", "success", "secondary"];
 const badgeVariants = ["soft", "outline", "dash", ""];
@@ -83,7 +85,7 @@ const Page = () => {
             <div key={`card-${i}`} className="rounded-box shadow-md text-center">
               <iframe src={item.url} height="200" className="rounded-t-box w-full" />
               <a href={item.url} onClick={(event) => copyLinkToClipboard(event, item.url)}>
-                📰
+                <FontAwesomeIcon icon={fas["copy"]} />
               </a>
             </div>
           ))}
