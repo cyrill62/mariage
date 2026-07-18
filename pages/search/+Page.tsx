@@ -162,21 +162,19 @@ export default function Page() {
         ))}
       </div>
       <div className="hidden">
-        <div className="badge badge-primary">primary</div>
-        <div className="badge badge-soft badge-primary">primary</div>
-        <div className="badge badge-dash badge-primary">primary</div>
-
-                <div className="badge badge-accent">accent</div>
-        <div className="badge badge-soft badge-accent">accent</div>
-        <div className="badge badge-dash badge-accent">accent</div>
-
-                <div className="badge badge-success">success</div>
-        <div className="badge badge-soft badge-success">success</div>
-        <div className="badge badge-dash badge-success">success</div>
-
-                <div className="badge badge-info">info</div>
-        <div className="badge badge-soft badge-info">info</div>
-        <div className="badge badge-dash badge-info">info</div>
+        {/* Force to not cleanup badges colors */}
+        <div className="badge">badge</div>
+        <div className="badge-soft">soft</div>
+        <div className="badge-dash">dash</div>
+        <div className="badge-outline">outline</div>
+        <div className="badge-primary">primary</div>
+        <div className="badge-accent">primary</div>
+        <div className="badge-info">primary</div>
+        <div className="badge-warning">primary</div>
+        <div className="badge-error">primary</div>
+        <div className="badge-success">primary</div>
+        <div className="badge-secondary">primary</div>
+        <div className="badge-error">primary</div>
       </div>
 
       <div className="divider" />
