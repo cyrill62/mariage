@@ -117,7 +117,7 @@ export default function Page() {
     const config: SearchConfig = {
       url: import.meta.env.PUBLIC_ENV__TYPESENSE_API_URL,
       apiKey: import.meta.env.PUBLIC_ENV__TYPESENSE_API_KEY, // 🔒 Never hardcode! Use process.env.TYPESENSE_API_KEY
-      collectionName: "mariageItems",
+      collectionName: "mariage_items",
       queryBy: ["url"], // Fields to search in
       limit: 50,
     };
