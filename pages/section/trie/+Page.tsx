@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client/react";
 import { gql } from "@apollo/client";
-import ReactMarkdown from "react-markdown";
+
 const badgeColors = [/*'primary', 'accent', */ "info", "warning", "error", "success", "secondary"];
 const badgeVariants = ["soft", "outline", "dash", ""];
 const Page = () => {
@@ -15,6 +15,56 @@ const Page = () => {
     }
   `);
 
+  /**
+   * Copies the provided URL/link text to the user's clipboard.
+   * Uses the modern Clipboard API with a secure fallback for older browsers/restricted contexts.
+   *
+   * @param url The link or text to copy
+   * @returns Promise<boolean> true on success, false on failure
+   */
+  async function copyLinkToClipboard(event: any, url: string): Promise<boolean> {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (typeof url !== "string" || !url.trim()) {
+      console.error("❌ Invalid URL provided to clipboard function");
+      return false;
+    }
+
+    // 1️⃣ Try modern Clipboard API
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(url);
+        return true;
+      } catch (error) {
+        console.warn("⚠️ Clipboard API failed, falling back...", error);
+      }
+    }
+
+    // 2️⃣ Fallback for older browsers or non-secure contexts
+    const tempInput = document.createElement("input");
+    tempInput.value = url;
+    tempInput.style.position = "fixed";
+    tempInput.style.left = "-9999px";
+    tempInput.style.top = "-9999px";
+    tempInput.style.opacity = "0";
+    document.body.appendChild(tempInput);
+
+    try {
+      tempInput.select();
+      const success = document.execCommand("copy");
+      return !!success;
+    } catch (error) {
+      console.error("❌ Fallback clipboard copy failed:", error);
+      return false;
+    } finally {
+      // Always cleanup the temporary element
+      if (tempInput.parentNode === document.body) {
+        document.body.removeChild(tempInput);
+      }
+    }
+  }
+
   let uncategorized = [];
 
   if (!loading && data) {
@@ -27,7 +77,9 @@ const Page = () => {
           {uncategorized.map((item, i) => (
             <div key={`card-${i}`} className="rounded-box shadow-md text-center">
               <iframe src={item.url} height="200" className="rounded-t-box w-full" />
-              <a href={item.url}>📰</a>
+              <a href={item.url} onClick={(event) => copyLinkToClipboard(event, item.url)}>
+                📰
+              </a>
             </div>
           ))}
         </div>

@@ -78,9 +78,16 @@ export default function Page() {
    * Returns the full Typesense SearchResult object containing matched documents.
    */
   async function searchMariageItems(tag: string, config: SearchConfig): Promise<SearchResult<MariageItemSchema>> {
-    // ⚠️ In production, instantiate the client once and reuse it to avoid overhead
+    const url = new URL(config.url);
+
     const client = new typesense.Client({
-      nodes: [config.url],
+      nodes: [
+        {
+          host: url.hostname,
+          port: url.port,
+          protocol: url.protocol.replace(/:$/, ""),
+        },
+      ],
       apiKey: config.apiKey,
       connectionTimeoutSeconds: 2,
     });

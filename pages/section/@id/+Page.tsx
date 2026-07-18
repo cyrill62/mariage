@@ -8,7 +8,7 @@ const badgeVariants = ["soft", "outline", "dash", ""];
 
 const Page = () => {
   const pageContext = usePageContext();
-  const slug = pageContext.routeParams.id.split('_').pop();
+  const slug = pageContext.routeParams.id.split("_").pop();
 
   const { data, loading, error }: { data: any; loading: boolean; error: any } = useQuery(gql`
     {

@@ -11,8 +11,7 @@ export default (pageContext: PageContext) => {
   });
 
   const authLink = new SetContextLink(({ headers }) => {
-    const token =
-      import.meta.env.PUBLIC_ENV__API_TOKEN;
+    const token = import.meta.env.PUBLIC_ENV__API_TOKEN;
     // return the headers to the context so httpLink can read them
     return {
       headers: {
