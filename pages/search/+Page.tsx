@@ -141,7 +141,7 @@ export default function Page() {
     <>
       <h1>Recherchez les images ou vidéos où sont présentent :</h1>
       <div>
-        {tags.map((tag) => (
+        {tags.sort().map((tag) => (
           <a className={`badge me-2`} href={`#${tag}`} onClick={() => runSearch(tag)}>
             #{tag}
           </a>
