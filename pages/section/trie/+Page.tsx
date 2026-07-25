@@ -9,7 +9,7 @@ const Page = () => {
 
   const { data, loading, error }: { data: any; loading: boolean; error: any } = useQuery(gql`
     {
-      mariageItems(filters: { section: { null: true } }, sort: ["date:asc"], pagination: { limit: 10 }) {
+      mariageItems(filters: { section: { null: true } }, sort: ["date:asc"], pagination: { limit: 20 }) {
         url
         tags
         date
