@@ -1,0 +1,24 @@
+{
+    "moments": {
+        "mairie": {
+            "start_time": "10:00",
+            "end_time": "12:00",
+            "description": "Cérémonie à la mairie"
+        },
+        "vin_d_honneur": {
+            "start_time": "12:30",
+            "end_time": "14:00",
+            "description": "Vin d'honneur"
+        },
+        "repas": {
+            "start_time": "14:30",
+            "end_time": "18:00",
+            "description": "Repas"
+        },
+        "soiree": {
+            "start_time": "19:00",
+            "end_time": "02:00",
+            "description": "Soirée"
+        }
+    }
+}

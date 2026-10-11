@@ -1,0 +1,4 @@
+# Ce dossier contiendra les résultats du traitement:
+# - Sous-dossiers pour chaque moment (mairie, vin_d_honneur, repas, soiree)
+# - Photos classées avec des fichiers texte d'information
+# - Fichier summary.json avec les statistiques
